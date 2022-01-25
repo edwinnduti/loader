@@ -10,11 +10,11 @@ go get github.com/edwinnduti/loader
 
 - The types of loaders/spinners include:
 
-| label           | name | 		figures        	|
-| --------------- | ---- | ---------------------------- |
-| rotating circes | dc   | "⠈⠁", "⠈⠑", "⠈⠱", "⠈⡱", "⢀⡱", "⢄⡱", "⢄⡱", "⢆⡱", "⢎⡱", "⢎⡰", "⢎⡠", "⢎⡀", "⢎⠁", "⠎⠁", "⠊⠁" |
-| rotating blocks | rb   | "⣾","⣽","⣻","⢿","⡿", "⣟","⣯","⣷" |
-| rotating sticks | rc   | 	"\\", "|", "/", "-" 	|
+| label           | name | figures                                       	  |
+| --------------- | ---- | ----------------------------------------------------   |
+| rotating circes | dc   | `⠈⠁⠈⠑ ⠈⠱ ⠈⡱ ⢀⡱ ⢄⡱ ⢄⡱ ⢆⡱ ⢎⡱ ⢎⡰ ⢎⡠ ⢎⡀ ⢎⠁ ⠎⠁ ⠊⠁` |
+| rotating blocks | rb   | `⣾ ⣽ ⣻ ⢿ ⡿ ⣟ ⣯ ⣷`                                     |
+| rotating sticks | rc   | ```\ | / -```                                          |
 
 ### Usage
 
