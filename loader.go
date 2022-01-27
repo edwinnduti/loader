@@ -1,15 +1,16 @@
+/*
+A loader library that shows spinner animation
+*/
 package loader
 
 import (
 	"fmt"
 	"io"
-	"sync"
 	"time"
 )
 
+// spin types
 var (
-	mu *sync.RWMutex = &sync.RWMutex{}
-	done = make(chan struct{})
 	spins = map[string][]string{
 		"rs" : {"\\", "|", "/", "-"},
 		"dc" : {"⠈⠁", "⠈⠑", "⠈⠱", "⠈⡱", "⢀⡱", "⢄⡱", "⢄⡱", "⢆⡱", "⢎⡱", "⢎⡰", "⢎⡠", "⢎⡀", "⢎⠁", "⠎⠁", "⠊⠁"},
@@ -17,6 +18,7 @@ var (
 	}
 )
 
+// loader contents
 type Loader struct {
 	Name 			string
 	Delay   		time.Duration
@@ -25,10 +27,10 @@ type Loader struct {
 	EndMessage		string
 	HideCursor		string
 	ShowCursor		string
-	FinalMessage 	string
 	StopChan		chan struct{}
 }
 
+// create new spinner
 func New(w io.Writer, name string, d time.Duration, firstmsg , endmsg string) *Loader {
 	return &Loader{
 		Output: w,
@@ -42,22 +44,24 @@ func New(w io.Writer, name string, d time.Duration, firstmsg , endmsg string) *L
 	}
 }
 
+// run the spinner
 func (L *Loader) Initialize(){
-
 	// hide cursor
 	fmt.Fprint(L.Output, L.HideCursor)
 
 	go func(){
 
 		for{
-
+			// get the current spin type
 			for _, spinItem := range spins[L.Name] {
 				select {
+					// stop the spinner
 				case <- L.StopChan:
 					return
 				default:
+					// print the spinner
 					outLine := fmt.Sprintf("\r%s%s%s",L.StartMessage, spinItem, L.EndMessage)
-					fmt.Fprintf(L.Output, outLine)
+					fmt.Fprint(L.Output, outLine)
 					time.Sleep(L.Delay)
 				}
 			}
@@ -65,14 +69,15 @@ func (L *Loader) Initialize(){
 	}()
 }
 
-func (L *Loader) End(){
+// stop the spinner
+func (L *Loader) End(finalMessage string){
 
 	// bring back cursor
 	fmt.Fprintf(L.Output, L.ShowCursor)
 
 	// erase line
-	fmt.Fprintf(L.Output, "\r\033[K")
+	fmt.Fprint(L.Output, "\r\033[K", finalMessage)
 
+	// close the stop channel
 	L.StopChan <- struct{}{}
-	return
 }
