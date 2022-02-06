@@ -1,6 +1,6 @@
 # Loader
 
-[![Build GO workflow](https://github.com/edwinnduti/loader/actions/workflows/deploy.yaml/badge.svg?branch=master)](https://github.com/edwinnduti/loader/actions/workflows/go.yml)
+[![Deploy](https://github.com/edwinnduti/loader/actions/workflows/go.yml/badge.svg)](https://github.com/edwinnduti/loader/actions/workflows/go.yml)
 ![License: MIT](https://img.shields.io/badge/Language-Golang-blue.svg)
 
 - These are loaders which can be adjusted speed as in accordance the user to show a user that a specific process in loading.
@@ -14,10 +14,10 @@ go get github.com/edwinnduti/loader
 - The types of loaders/spinners include:
 
 | label           | name | figures                                       |
-| --------------- | ---- | --------------------------------------------------- |
+| --------------- | ---- | --------------------------------------------- | ------ |
 | rotating circes | dc   | `⠈⠁⠈⠑ ⠈⠱ ⠈⡱ ⢀⡱ ⢄⡱ ⢄⡱ ⢆⡱ ⢎⡱ ⢎⡰ ⢎⡠ ⢎⡀ ⢎⠁ ⠎⠁ ⠊⠁` |
 | rotating blocks | rb   | `⣾ ⣽ ⣻ ⢿ ⡿ ⣟ ⣯ ⣷`                             |
-| rotating sticks | rc   | ```\ | / -``` |
+| rotating sticks | rc   | ```\                                          | / -``` |
 
 ### Usage
 
